@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="OvermindTestBed — Feature Coverage Dashboard">
+<meta property="og:description" content="Integration test results for Overmind v3.0.0 — 14 subsystems, 53 tests">
+<title>OvermindTestBed — Feature Coverage Dashboard</title>
+<style>
+  :root {
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --border: #e2e8f0;
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --pass: #22c55e;
+    --pass-bg: #f0fdf4;
+    --pass-border: #86efac;
+    --fail: #ef4444;
+    --fail-bg: #fef2f2;
+    --fail-border: #fca5a5;
+    --unknown: #6b7280;
+    --unknown-bg: #f9fafb;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --border: #334155;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --pass-bg: #052e16;
+      --pass-border: #166534;
+      --fail-bg: #450a0a;
+      --fail-border: #7f1d1d;
+      --unknown-bg: #1f2937;
+      --shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 1.25rem 2rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  header h1 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+  header .subtitle {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  .timestamp {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+  /* Summary stats */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    box-shadow: var(--shadow);
+  }
+  .stat-card .label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 0.35rem;
+  }
+  .stat-card .value {
+    font-size: 2rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .stat-card.pass .value { color: var(--pass); }
+  .stat-card.fail .value { color: var(--fail); }
+  /* Section headers */
+  .section-header {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+  /* Feature matrix */
+  .matrix-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  @media (max-width: 700px) {
+    .matrix-grid { grid-template-columns: 1fr; }
+  }
+  .matrix-row {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.9rem;
+    box-shadow: var(--shadow);
+    transition: border-color 0.15s;
+  }
+  .matrix-row.pass { border-left: 3px solid var(--pass); }
+  .matrix-row.fail { border-left: 3px solid var(--fail); }
+  .matrix-row.unknown { border-left: 3px solid var(--unknown); }
+  .badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .badge.pass { background: var(--pass-bg); color: var(--pass); border: 1px solid var(--pass-border); }
+  .badge.fail { background: var(--fail-bg); color: var(--fail); border: 1px solid var(--fail-border); }
+  .badge.unknown { background: var(--unknown-bg); color: var(--unknown); border: 1px solid var(--border); }
+  .module-info { flex: 1; min-width: 0; }
+  .module-name { font-size: 0.875rem; font-weight: 600; color: var(--text); }
+  .module-file { font-size: 0.7rem; color: var(--text-muted); font-family: 'SF Mono', 'Fira Code', monospace; margin-top: 0.1rem; }
+  .module-counts { font-size: 0.72rem; color: var(--text-muted); white-space: nowrap; flex-shrink: 0; }
+  /* Test results table */
+  .table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  thead tr {
+    background: var(--bg);
+    border-bottom: 2px solid var(--border);
+  }
+  th {
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+  }
+  td { padding: 0.5rem 0.9rem; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  tr.pass:hover { background: var(--pass-bg); }
+  tr.fail:hover { background: var(--fail-bg); }
+  .test-name { font-family: 'SF Mono', 'Fira Code', monospace; color: var(--text); }
+  .test-file { color: var(--text-muted); font-size: 0.75rem; font-family: 'SF Mono', 'Fira Code', monospace; }
+  .status-dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 0.4rem;
+    vertical-align: middle;
+  }
+  .status-dot.pass { background: var(--pass); }
+  .status-dot.fail { background: var(--fail); }
+  .status-text { font-size: 0.75rem; font-weight: 600; vertical-align: middle; }
+  .status-text.pass { color: var(--pass); }
+  .status-text.fail { color: var(--fail); }
+  .error-msg {
+    padding: 2rem;
+    color: var(--fail);
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  .loading {
+    padding: 2rem;
+    color: var(--text-muted);
+    text-align: center;
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>OvermindTestBed</h1>
+  <span class="subtitle">Feature Coverage Dashboard — Overmind v3.0.0</span>
+  <span class="timestamp" id="ts">Loading...</span>
+</header>
+<main>
+  <div id="content"><div class="loading">Loading test results...</div></div>
+</main>
+<script>
+const MODULE_MAP = [
+  { name: 'ProjectScanner / Indexer',    file: 'test_discovery.py' },
+  { name: 'TaskGenerator',               file: 'test_task_generation.py' },
+  { name: 'Prioritizer',                 file: 'test_prioritization.py' },
+  { name: 'QRouter / Scheduler',         file: 'test_routing.py' },
+  { name: 'SessionManager / Terminal',   file: 'test_dispatch.py' },
+  { name: 'Verifier',                    file: 'test_verification.py' },
+  { name: 'ContextInjector',             file: 'test_context_injection.py' },
+  { name: 'LoopDetector',               file: 'test_loop_detection.py' },
+  { name: 'MultiPersonaReviewer',        file: 'test_review.py' },
+  { name: 'MemoryStore / DreamEngine',   file: 'test_memory_lifecycle.py' },
+  { name: 'TaskQueue (DAG)',             file: 'test_dag_dependencies.py' },
+  { name: 'PolicyEngine',               file: 'test_resource_scaling.py' },
+  { name: 'WorktreeManager',            file: 'test_worktree.py' },
+  { name: 'Orchestrator',               file: 'test_full_cycle.py' },
+];
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function formatTimestamp(iso) {
+  try {
+    const d = new Date(iso);
+    return d.toLocaleString(undefined, {
+      year: 'numeric', month: 'short', day: 'numeric',
+      hour: '2-digit', minute: '2-digit', second: '2-digit'
+    });
+  } catch(e) { return iso; }
+}
+
+function renderDashboard(data) {
+  const tests = data.tests || [];
+  const total = data.total || tests.length;
+  const passed = tests.filter(t => t.passed).length;
+  const failed = total - passed;
+  const exitOk = data.exit_status === 0;
+
+  // Timestamp
+  document.getElementById('ts').textContent = 'Run: ' + formatTimestamp(data.timestamp);
+
+  // Group tests by file
+  const byFile = {};
+  for (const t of tests) {
+    const f = t.file || 'unknown';
+    if (!byFile[f]) byFile[f] = [];
+    byFile[f].push(t);
+  }
+
+  // Build HTML
+  let html = '';
+
+  // Summary stats
+  html += '<div class="stats-row">';
+  html += `<div class="stat-card"><div class="label">Total Tests</div><div class="value">${total}</div></div>`;
+  html += `<div class="stat-card pass"><div class="label">Passed</div><div class="value">${passed}</div></div>`;
+  html += `<div class="stat-card${failed > 0 ? ' fail' : ''}"><div class="label">Failed</div><div class="value">${failed}</div></div>`;
+  const pct = total > 0 ? Math.round(passed / total * 100) : 0;
+  html += `<div class="stat-card"><div class="label">Pass Rate</div><div class="value">${pct}%</div></div>`;
+  html += '</div>';
+
+  // Feature matrix
+  html += '<div>';
+  html += '<div class="section-header">Feature Coverage Matrix — 14 Overmind Modules</div>';
+  html += '<div class="matrix-grid">';
+
+  for (const mod of MODULE_MAP) {
+    const fileTests = byFile[mod.file] || [];
+    let status = 'unknown';
+    if (fileTests.length > 0) {
+      status = fileTests.every(t => t.passed) ? 'pass' : 'fail';
+    }
+    const passCount = fileTests.filter(t => t.passed).length;
+    const totalCount = fileTests.length;
+    const label = status === 'pass' ? 'PASS' : status === 'fail' ? 'FAIL' : 'N/A';
+
+    html += `<div class="matrix-row ${esc(status)}">`;
+    html += `<span class="badge ${esc(status)}">${label}</span>`;
+    html += `<div class="module-info">`;
+    html += `<div class="module-name">${esc(mod.name)}</div>`;
+    html += `<div class="module-file">${esc(mod.file)}</div>`;
+    html += `</div>`;
+    if (totalCount > 0) {
+      html += `<div class="module-counts">${passCount}/${totalCount}</div>`;
+    }
+    html += '</div>';
+  }
+
+  html += '</div></div>';
+
+  // Test results table
+  html += '<div>';
+  html += '<div class="section-header">All Tests (' + total + ')</div>';
+  html += '<div class="table-wrap"><table>';
+  html += '<thead><tr><th>#</th><th>Test Name</th><th>File</th><th>Status</th></tr></thead>';
+  html += '<tbody>';
+
+  tests.forEach((t, i) => {
+    const statusClass = t.passed ? 'pass' : 'fail';
+    const statusText = t.passed ? 'PASS' : 'FAIL';
+    html += `<tr class="${statusClass}">`;
+    html += `<td style="color:var(--text-muted);font-variant-numeric:tabular-nums">${i + 1}</td>`;
+    html += `<td class="test-name">${esc(t.name)}</td>`;
+    html += `<td class="test-file">${esc(t.file)}</td>`;
+    html += `<td><span class="status-dot ${statusClass}"></span><span class="status-text ${statusClass}">${statusText}</span></td>`;
+    html += '</tr>';
+  });
+
+  html += '</tbody></table></div></div>';
+
+  document.getElementById('content').innerHTML = html;
+}
+
+fetch('test_results.json')
+  .then(r => {
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.json();
+  })
+  .then(renderDashboard)
+  .catch(err => {
+    document.getElementById('content').innerHTML =
+      '<div class="error-msg">Failed to load test_results.json: ' + esc(err.message) +
+      '<br><small>Run pytest from the project root to generate results, then serve this directory over HTTP.</small></div>';
+    document.getElementById('ts').textContent = 'No data';
+  });
+</script>
+</body>
+</html>

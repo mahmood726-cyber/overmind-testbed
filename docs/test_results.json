@@ -1,0 +1,325 @@
+{
+  "timestamp": "2026-04-08T00:15:43.125841",
+  "total": 53,
+  "exit_status": 0,
+  "tests": [
+    {
+      "name": "test_context_has_overmind_header",
+      "file": "test_context_injection.py",
+      "nodeid": "tests/test_context_injection.py::test_context_has_overmind_header",
+      "passed": true
+    },
+    {
+      "name": "test_context_includes_heuristics",
+      "file": "test_context_injection.py",
+      "nodeid": "tests/test_context_injection.py::test_context_includes_heuristics",
+      "passed": true
+    },
+    {
+      "name": "test_context_includes_q_scores",
+      "file": "test_context_injection.py",
+      "nodeid": "tests/test_context_injection.py::test_context_includes_q_scores",
+      "passed": true
+    },
+    {
+      "name": "test_empty_db_no_crash",
+      "file": "test_context_injection.py",
+      "nodeid": "tests/test_context_injection.py::test_empty_db_no_crash",
+      "passed": true
+    },
+    {
+      "name": "test_build_task_is_queued",
+      "file": "test_dag_dependencies.py",
+      "nodeid": "tests/test_dag_dependencies.py::test_build_task_is_queued",
+      "passed": true
+    },
+    {
+      "name": "test_blocked_task_not_in_queued",
+      "file": "test_dag_dependencies.py",
+      "nodeid": "tests/test_dag_dependencies.py::test_blocked_task_not_in_queued",
+      "passed": true
+    },
+    {
+      "name": "test_completing_blocker_unblocks_dependent",
+      "file": "test_dag_dependencies.py",
+      "nodeid": "tests/test_dag_dependencies.py::test_completing_blocker_unblocks_dependent",
+      "passed": true
+    },
+    {
+      "name": "test_multi_dependency_all_must_complete",
+      "file": "test_dag_dependencies.py",
+      "nodeid": "tests/test_dag_dependencies.py::test_multi_dependency_all_must_complete",
+      "passed": true
+    },
+    {
+      "name": "test_project_type_is_browser_app",
+      "file": "test_discovery.py",
+      "nodeid": "tests/test_discovery.py::test_project_type_is_browser_app",
+      "passed": true
+    },
+    {
+      "name": "test_risk_profile_is_high",
+      "file": "test_discovery.py",
+      "nodeid": "tests/test_discovery.py::test_risk_profile_is_high",
+      "passed": true
+    },
+    {
+      "name": "test_advanced_math_detected",
+      "file": "test_discovery.py",
+      "nodeid": "tests/test_discovery.py::test_advanced_math_detected",
+      "passed": true
+    },
+    {
+      "name": "test_test_commands_found",
+      "file": "test_discovery.py",
+      "nodeid": "tests/test_discovery.py::test_test_commands_found",
+      "passed": true
+    },
+    {
+      "name": "test_echo_runner_spawns_and_exits",
+      "file": "test_dispatch.py",
+      "nodeid": "tests/test_dispatch.py::test_echo_runner_spawns_and_exits",
+      "passed": true
+    },
+    {
+      "name": "test_output_lines_captured",
+      "file": "test_dispatch.py",
+      "nodeid": "tests/test_dispatch.py::test_output_lines_captured",
+      "passed": true
+    },
+    {
+      "name": "test_exit_code_propagated_on_failure",
+      "file": "test_dispatch.py",
+      "nodeid": "tests/test_dispatch.py::test_exit_code_propagated_on_failure",
+      "passed": true
+    },
+    {
+      "name": "test_interactive_protocol_keeps_stdin_open",
+      "file": "test_dispatch.py",
+      "nodeid": "tests/test_dispatch.py::test_interactive_protocol_keeps_stdin_open",
+      "passed": true
+    },
+    {
+      "name": "test_dry_run_returns_would_dispatch",
+      "file": "test_full_cycle.py",
+      "nodeid": "tests/test_full_cycle.py::test_dry_run_returns_would_dispatch",
+      "passed": true
+    },
+    {
+      "name": "test_dry_run_finds_cardiooracle",
+      "file": "test_full_cycle.py",
+      "nodeid": "tests/test_full_cycle.py::test_dry_run_finds_cardiooracle",
+      "passed": true
+    },
+    {
+      "name": "test_dry_run_generates_tasks",
+      "file": "test_full_cycle.py",
+      "nodeid": "tests/test_full_cycle.py::test_dry_run_generates_tasks",
+      "passed": true
+    },
+    {
+      "name": "test_exact_repeat_detected",
+      "file": "test_loop_detection.py",
+      "nodeid": "tests/test_loop_detection.py::test_exact_repeat_detected",
+      "passed": true
+    },
+    {
+      "name": "test_fingerprint_catches_near_duplicates",
+      "file": "test_loop_detection.py",
+      "nodeid": "tests/test_loop_detection.py::test_fingerprint_catches_near_duplicates",
+      "passed": true
+    },
+    {
+      "name": "test_different_lines_not_flagged",
+      "file": "test_loop_detection.py",
+      "nodeid": "tests/test_loop_detection.py::test_different_lines_not_flagged",
+      "passed": true
+    },
+    {
+      "name": "test_save_and_recall",
+      "file": "test_memory_lifecycle.py",
+      "nodeid": "tests/test_memory_lifecycle.py::test_save_and_recall",
+      "passed": true
+    },
+    {
+      "name": "test_dream_merges_duplicates",
+      "file": "test_memory_lifecycle.py",
+      "nodeid": "tests/test_memory_lifecycle.py::test_dream_merges_duplicates",
+      "passed": true
+    },
+    {
+      "name": "test_dream_prunes_stale",
+      "file": "test_memory_lifecycle.py",
+      "nodeid": "tests/test_memory_lifecycle.py::test_dream_prunes_stale",
+      "passed": true
+    },
+    {
+      "name": "test_fts5_search",
+      "file": "test_memory_lifecycle.py",
+      "nodeid": "tests/test_memory_lifecycle.py::test_fts5_search",
+      "passed": true
+    },
+    {
+      "name": "test_decay_reduces_relevance",
+      "file": "test_memory_lifecycle.py",
+      "nodeid": "tests/test_memory_lifecycle.py::test_decay_reduces_relevance",
+      "passed": true
+    },
+    {
+      "name": "test_browser_tests_boost",
+      "file": "test_prioritization.py",
+      "nodeid": "tests/test_prioritization.py::test_browser_tests_boost",
+      "passed": true
+    },
+    {
+      "name": "test_numeric_logic_boost",
+      "file": "test_prioritization.py",
+      "nodeid": "tests/test_prioritization.py::test_numeric_logic_boost",
+      "passed": true
+    },
+    {
+      "name": "test_priority_capped_at_099",
+      "file": "test_prioritization.py",
+      "nodeid": "tests/test_prioritization.py::test_priority_capped_at_099",
+      "passed": true
+    },
+    {
+      "name": "test_normal_resources_two_sessions",
+      "file": "test_resource_scaling.py",
+      "nodeid": "tests/test_resource_scaling.py::test_normal_resources_two_sessions",
+      "passed": true
+    },
+    {
+      "name": "test_high_ram_scales_down",
+      "file": "test_resource_scaling.py",
+      "nodeid": "tests/test_resource_scaling.py::test_high_ram_scales_down",
+      "passed": true
+    },
+    {
+      "name": "test_high_swap_scales_down",
+      "file": "test_resource_scaling.py",
+      "nodeid": "tests/test_resource_scaling.py::test_high_swap_scales_down",
+      "passed": true
+    },
+    {
+      "name": "test_low_cpu_scales_up",
+      "file": "test_resource_scaling.py",
+      "nodeid": "tests/test_resource_scaling.py::test_low_cpu_scales_up",
+      "passed": true
+    },
+    {
+      "name": "test_five_personas_for_high_risk_math",
+      "file": "test_review.py",
+      "nodeid": "tests/test_review.py::test_five_personas_for_high_risk_math",
+      "passed": true
+    },
+    {
+      "name": "test_cross_model_dispatch",
+      "file": "test_review.py",
+      "nodeid": "tests/test_review.py::test_cross_model_dispatch",
+      "passed": true
+    },
+    {
+      "name": "test_consensus_from_mock_outputs",
+      "file": "test_review.py",
+      "nodeid": "tests/test_review.py::test_consensus_from_mock_outputs",
+      "passed": true
+    },
+    {
+      "name": "test_parse_review_output_extracts_findings",
+      "file": "test_review.py",
+      "nodeid": "tests/test_review.py::test_parse_review_output_extracts_findings",
+      "passed": true
+    },
+    {
+      "name": "test_q_score_updates_on_win",
+      "file": "test_routing.py",
+      "nodeid": "tests/test_routing.py::test_q_score_updates_on_win",
+      "passed": true
+    },
+    {
+      "name": "test_q_score_updates_on_loss",
+      "file": "test_routing.py",
+      "nodeid": "tests/test_routing.py::test_q_score_updates_on_loss",
+      "passed": true
+    },
+    {
+      "name": "test_laplace_smoothing_cold_start",
+      "file": "test_routing.py",
+      "nodeid": "tests/test_routing.py::test_laplace_smoothing_cold_start",
+      "passed": true
+    },
+    {
+      "name": "test_scheduler_prefers_claude_for_high_risk",
+      "file": "test_routing.py",
+      "nodeid": "tests/test_routing.py::test_scheduler_prefers_claude_for_high_risk",
+      "passed": true
+    },
+    {
+      "name": "test_scheduler_prefers_codex_for_tests",
+      "file": "test_routing.py",
+      "nodeid": "tests/test_routing.py::test_scheduler_prefers_codex_for_tests",
+      "passed": true
+    },
+    {
+      "name": "test_generates_test_first_tasks",
+      "file": "test_task_generation.py",
+      "nodeid": "tests/test_task_generation.py::test_generates_test_first_tasks",
+      "passed": true
+    },
+    {
+      "name": "test_impl_task_has_verify_command",
+      "file": "test_task_generation.py",
+      "nodeid": "tests/test_task_generation.py::test_impl_task_has_verify_command",
+      "passed": true
+    },
+    {
+      "name": "test_no_duplicates_on_rerun",
+      "file": "test_task_generation.py",
+      "nodeid": "tests/test_task_generation.py::test_no_duplicates_on_rerun",
+      "passed": true
+    },
+    {
+      "name": "test_impl_blocked_by_test_task",
+      "file": "test_task_generation.py",
+      "nodeid": "tests/test_task_generation.py::test_impl_blocked_by_test_task",
+      "passed": true
+    },
+    {
+      "name": "test_real_pytest_passes",
+      "file": "test_verification.py",
+      "nodeid": "tests/test_verification.py::test_real_pytest_passes",
+      "passed": true
+    },
+    {
+      "name": "test_verification_parses_details",
+      "file": "test_verification.py",
+      "nodeid": "tests/test_verification.py::test_verification_parses_details",
+      "passed": true
+    },
+    {
+      "name": "test_failing_command_returns_failure",
+      "file": "test_verification.py",
+      "nodeid": "tests/test_verification.py::test_failing_command_returns_failure",
+      "passed": true
+    },
+    {
+      "name": "test_non_git_returns_none",
+      "file": "test_worktree.py",
+      "nodeid": "tests/test_worktree.py::test_non_git_returns_none",
+      "passed": true
+    },
+    {
+      "name": "test_needs_isolation_detects_concurrent",
+      "file": "test_worktree.py",
+      "nodeid": "tests/test_worktree.py::test_needs_isolation_detects_concurrent",
+      "passed": true
+    },
+    {
+      "name": "test_no_isolation_when_not_concurrent",
+      "file": "test_worktree.py",
+      "nodeid": "tests/test_worktree.py::test_no_isolation_when_not_concurrent",
+      "passed": true
+    }
+  ]
+}

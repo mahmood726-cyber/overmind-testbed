@@ -31,8 +31,12 @@ def test_echo_runner_spawns_and_exits(tmp_path, stub_runners):
     )
     assert len(started) == 1
 
-    time.sleep(2)
-    observations = manager.collect_output()
+    # Poll until process exits (up to 10s) instead of fixed sleep
+    for _ in range(20):
+        time.sleep(0.5)
+        observations = manager.collect_output()
+        if observations and observations[0].exit_code is not None:
+            break
     assert len(observations) >= 1
     obs = observations[0]
     assert obs.exit_code == 0

@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 from overmind.verification.witnesses import (
-    TestSuiteWitness,
+    SuiteWitness,
     SmokeWitness,
     NumericalWitness,
 )
@@ -15,7 +15,7 @@ CARDIOORACLE_ROOT = Path("C:/Models/CardioOracle")
 
 
 def test_test_suite_witness_passes_real_pytest(tmp_path):
-    witness = TestSuiteWitness(timeout=120)
+    witness = SuiteWitness(timeout=120)
     result = witness.run(
         command="python -m pytest tests/test_curation.py -q",
         cwd=str(CARDIOORACLE_ROOT),
@@ -26,7 +26,7 @@ def test_test_suite_witness_passes_real_pytest(tmp_path):
 
 
 def test_test_suite_witness_detects_failure(tmp_path):
-    witness = TestSuiteWitness(timeout=30)
+    witness = SuiteWitness(timeout=30)
     result = witness.run(
         command='python -c "raise SystemExit(1)"',
         cwd=str(tmp_path),

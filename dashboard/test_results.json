@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-04-08T01:56:56.410726",
-  "total": 74,
+  "timestamp": "2026-04-08T05:02:51.100834",
+  "total": 93,
   "exit_status": 0,
   "tests": [
     {
@@ -148,6 +148,42 @@
       "passed": true
     },
     {
+      "name": "test_new_diagnosis_creates_candidate",
+      "file": "test_evolution.py",
+      "nodeid": "tests/test_evolution.py::test_new_diagnosis_creates_candidate",
+      "passed": true
+    },
+    {
+      "name": "test_repeated_pattern_increments",
+      "file": "test_evolution.py",
+      "nodeid": "tests/test_evolution.py::test_repeated_pattern_increments",
+      "passed": true
+    },
+    {
+      "name": "test_resolution_tracked",
+      "file": "test_evolution.py",
+      "nodeid": "tests/test_evolution.py::test_resolution_tracked",
+      "passed": true
+    },
+    {
+      "name": "test_confidence_calculated",
+      "file": "test_evolution.py",
+      "nodeid": "tests/test_evolution.py::test_confidence_calculated",
+      "passed": true
+    },
+    {
+      "name": "test_procedures_md_written",
+      "file": "test_evolution.py",
+      "nodeid": "tests/test_evolution.py::test_procedures_md_written",
+      "passed": true
+    },
+    {
+      "name": "test_recipe_recommended_on_match",
+      "file": "test_evolution.py",
+      "nodeid": "tests/test_evolution.py::test_recipe_recommended_on_match",
+      "passed": true
+    },
+    {
       "name": "test_dry_run_returns_would_dispatch",
       "file": "test_full_cycle.py",
       "nodeid": "tests/test_full_cycle.py::test_dry_run_returns_would_dispatch",
@@ -163,6 +199,48 @@
       "name": "test_dry_run_generates_tasks",
       "file": "test_full_cycle.py",
       "nodeid": "tests/test_full_cycle.py::test_dry_run_generates_tasks",
+      "passed": true
+    },
+    {
+      "name": "test_dependency_rot_detected",
+      "file": "test_judge.py",
+      "nodeid": "tests/test_judge.py::test_dependency_rot_detected",
+      "passed": true
+    },
+    {
+      "name": "test_numerical_drift_detected",
+      "file": "test_judge.py",
+      "nodeid": "tests/test_judge.py::test_numerical_drift_detected",
+      "passed": true
+    },
+    {
+      "name": "test_timeout_detected",
+      "file": "test_judge.py",
+      "nodeid": "tests/test_judge.py::test_timeout_detected",
+      "passed": true
+    },
+    {
+      "name": "test_test_failure_detected",
+      "file": "test_judge.py",
+      "nodeid": "tests/test_judge.py::test_test_failure_detected",
+      "passed": true
+    },
+    {
+      "name": "test_flaky_detected",
+      "file": "test_judge.py",
+      "nodeid": "tests/test_judge.py::test_flaky_detected",
+      "passed": true
+    },
+    {
+      "name": "test_unknown_fallback",
+      "file": "test_judge.py",
+      "nodeid": "tests/test_judge.py::test_unknown_fallback",
+      "passed": true
+    },
+    {
+      "name": "test_certified_returns_none",
+      "file": "test_judge.py",
+      "nodeid": "tests/test_judge.py::test_certified_returns_none",
       "passed": true
     },
     {
@@ -391,6 +469,42 @@
       "name": "test_failing_command_returns_failure",
       "file": "test_verification.py",
       "nodeid": "tests/test_verification.py::test_failing_command_returns_failure",
+      "passed": true
+    },
+    {
+      "name": "test_article_generated",
+      "file": "test_wiki_compiler.py",
+      "nodeid": "tests/test_wiki_compiler.py::test_article_generated",
+      "passed": true
+    },
+    {
+      "name": "test_history_appended",
+      "file": "test_wiki_compiler.py",
+      "nodeid": "tests/test_wiki_compiler.py::test_history_appended",
+      "passed": true
+    },
+    {
+      "name": "test_index_generated",
+      "file": "test_wiki_compiler.py",
+      "nodeid": "tests/test_wiki_compiler.py::test_index_generated",
+      "passed": true
+    },
+    {
+      "name": "test_changelog_appended",
+      "file": "test_wiki_compiler.py",
+      "nodeid": "tests/test_wiki_compiler.py::test_changelog_appended",
+      "passed": true
+    },
+    {
+      "name": "test_reject_has_notes",
+      "file": "test_wiki_compiler.py",
+      "nodeid": "tests/test_wiki_compiler.py::test_reject_has_notes",
+      "passed": true
+    },
+    {
+      "name": "test_compile_returns_stats",
+      "file": "test_wiki_compiler.py",
+      "nodeid": "tests/test_wiki_compiler.py::test_compile_returns_stats",
       "passed": true
     },
     {

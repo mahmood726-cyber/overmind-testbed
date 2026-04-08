@@ -1,8 +1,56 @@
 {
-  "timestamp": "2026-04-08T00:15:43.125841",
-  "total": 53,
+  "timestamp": "2026-04-08T01:56:56.410726",
+  "total": 74,
   "exit_status": 0,
   "tests": [
+    {
+      "name": "test_all_pass_is_certified",
+      "file": "test_arbitrator.py",
+      "nodeid": "tests/test_arbitrator.py::test_all_pass_is_certified",
+      "passed": true
+    },
+    {
+      "name": "test_all_fail_is_fail",
+      "file": "test_arbitrator.py",
+      "nodeid": "tests/test_arbitrator.py::test_all_fail_is_fail",
+      "passed": true
+    },
+    {
+      "name": "test_disagreement_is_reject",
+      "file": "test_arbitrator.py",
+      "nodeid": "tests/test_arbitrator.py::test_disagreement_is_reject",
+      "passed": true
+    },
+    {
+      "name": "test_numerical_drift_is_reject",
+      "file": "test_arbitrator.py",
+      "nodeid": "tests/test_arbitrator.py::test_numerical_drift_is_reject",
+      "passed": true
+    },
+    {
+      "name": "test_skip_witnesses_not_counted",
+      "file": "test_arbitrator.py",
+      "nodeid": "tests/test_arbitrator.py::test_skip_witnesses_not_counted",
+      "passed": true
+    },
+    {
+      "name": "test_bundle_hash_is_deterministic",
+      "file": "test_cert_bundle.py",
+      "nodeid": "tests/test_cert_bundle.py::test_bundle_hash_is_deterministic",
+      "passed": true
+    },
+    {
+      "name": "test_bundle_hash_changes_on_different_verdict",
+      "file": "test_cert_bundle.py",
+      "nodeid": "tests/test_cert_bundle.py::test_bundle_hash_changes_on_different_verdict",
+      "passed": true
+    },
+    {
+      "name": "test_bundle_serializes_to_json",
+      "file": "test_cert_bundle.py",
+      "nodeid": "tests/test_cert_bundle.py::test_bundle_serializes_to_json",
+      "passed": true
+    },
     {
       "name": "test_context_has_overmind_header",
       "file": "test_context_injection.py",
@@ -262,6 +310,24 @@
       "passed": true
     },
     {
+      "name": "test_scope_lock_is_frozen",
+      "file": "test_scope_lock.py",
+      "nodeid": "tests/test_scope_lock.py::test_scope_lock_is_frozen",
+      "passed": true
+    },
+    {
+      "name": "test_compute_tier_high_math_gets_3",
+      "file": "test_scope_lock.py",
+      "nodeid": "tests/test_scope_lock.py::test_compute_tier_high_math_gets_3",
+      "passed": true
+    },
+    {
+      "name": "test_witness_result_fields",
+      "file": "test_scope_lock.py",
+      "nodeid": "tests/test_scope_lock.py::test_witness_result_fields",
+      "passed": true
+    },
+    {
       "name": "test_generates_test_first_tasks",
       "file": "test_task_generation.py",
       "nodeid": "tests/test_task_generation.py::test_generates_test_first_tasks",
@@ -286,6 +352,30 @@
       "passed": true
     },
     {
+      "name": "test_tier_3_runs_three_witnesses",
+      "file": "test_truthcert_engine.py",
+      "nodeid": "tests/test_truthcert_engine.py::test_tier_3_runs_three_witnesses",
+      "passed": true
+    },
+    {
+      "name": "test_tier_1_runs_one_witness",
+      "file": "test_truthcert_engine.py",
+      "nodeid": "tests/test_truthcert_engine.py::test_tier_1_runs_one_witness",
+      "passed": true
+    },
+    {
+      "name": "test_full_pipeline_with_mocked_witnesses",
+      "file": "test_truthcert_engine.py",
+      "nodeid": "tests/test_truthcert_engine.py::test_full_pipeline_with_mocked_witnesses",
+      "passed": true
+    },
+    {
+      "name": "test_disagreement_produces_reject",
+      "file": "test_truthcert_engine.py",
+      "nodeid": "tests/test_truthcert_engine.py::test_disagreement_produces_reject",
+      "passed": true
+    },
+    {
       "name": "test_real_pytest_passes",
       "file": "test_verification.py",
       "nodeid": "tests/test_verification.py::test_real_pytest_passes",
@@ -301,6 +391,42 @@
       "name": "test_failing_command_returns_failure",
       "file": "test_verification.py",
       "nodeid": "tests/test_verification.py::test_failing_command_returns_failure",
+      "passed": true
+    },
+    {
+      "name": "test_test_suite_witness_passes_real_pytest",
+      "file": "test_witnesses.py",
+      "nodeid": "tests/test_witnesses.py::test_test_suite_witness_passes_real_pytest",
+      "passed": true
+    },
+    {
+      "name": "test_test_suite_witness_detects_failure",
+      "file": "test_witnesses.py",
+      "nodeid": "tests/test_witnesses.py::test_test_suite_witness_detects_failure",
+      "passed": true
+    },
+    {
+      "name": "test_smoke_witness_passes_clean_modules",
+      "file": "test_witnesses.py",
+      "nodeid": "tests/test_witnesses.py::test_smoke_witness_passes_clean_modules",
+      "passed": true
+    },
+    {
+      "name": "test_smoke_witness_catches_import_error",
+      "file": "test_witnesses.py",
+      "nodeid": "tests/test_witnesses.py::test_smoke_witness_catches_import_error",
+      "passed": true
+    },
+    {
+      "name": "test_numerical_witness_passes_matching_snapshot",
+      "file": "test_witnesses.py",
+      "nodeid": "tests/test_witnesses.py::test_numerical_witness_passes_matching_snapshot",
+      "passed": true
+    },
+    {
+      "name": "test_numerical_witness_detects_drift",
+      "file": "test_witnesses.py",
+      "nodeid": "tests/test_witnesses.py::test_numerical_witness_detects_drift",
       "passed": true
     },
     {

@@ -8,6 +8,7 @@ from overmind.verification.witnesses import (
     SmokeWitness,
     SuiteWitness,
 )
+
 from tests.conftest import CARDIOORACLE_ROOT
 
 

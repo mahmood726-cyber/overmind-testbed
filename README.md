@@ -1,17 +1,22 @@
 # OvermindTestBed
 
-Integration test harness for Overmind v3.0.0 — exercises 14 orchestrator subsystems against CardioOracle.
+Integration test harness for Overmind — exercises orchestrator subsystems against CardioOracle.
 
-## Quick Start
+## Install
 
 ```bash
-cd C:\OvermindTestBed
-python -m pytest tests/ -v --timeout=180
+pip install -r requirements.txt    # or just: pip install pytest
 ```
 
-## What It Tests
+Overmind itself must be importable on the Python path (it lives in a sibling clone — see *Dependencies* below).
 
-53 integration tests across 15 files covering: project discovery, task generation, prioritization, Q-learning routing, subprocess dispatch, verification, context injection, loop detection, multi-persona review, memory lifecycle, DAG dependencies, resource scaling, git worktree isolation, and full orchestration cycles.
+## Run tests
+
+```bash
+python -m pytest -q
+```
+
+Current count: 94 tests across 17 files, covering project discovery, task generation, prioritization, Q-learning routing, subprocess dispatch, verification, context injection, loop detection, multi-persona review, memory lifecycle, DAG dependencies, resource scaling, git worktree isolation, and full orchestration cycles. `pytest.ini` registers the `tests/` directory as a package.
 
 ## Dashboard
 
@@ -19,7 +24,7 @@ Open `dashboard/index.html` after running tests to see the feature coverage matr
 
 ## Dependencies
 
-- Python 3.13
-- Overmind at `C:\overmind\`
-- CardioOracle at `C:\Models\CardioOracle\` (read-only)
-- pytest
+- Python 3.13+
+- Overmind installed at a sibling location (default `../overmind/`; override via env var if your layout differs)
+- CardioOracle test fixture (read-only)
+- `pytest` (testing), `pytest-timeout` (optional but recommended)

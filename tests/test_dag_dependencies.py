@@ -1,8 +1,8 @@
 """Test DAG task dependencies and unblocking."""
 from __future__ import annotations
 
-from overmind.tasks.task_queue import TaskQueue
 from overmind.storage.models import TaskRecord
+from overmind.tasks.task_queue import TaskQueue
 
 
 def _task(tid, status="QUEUED", blocked_by=None):

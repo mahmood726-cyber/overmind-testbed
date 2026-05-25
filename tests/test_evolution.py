@@ -1,8 +1,6 @@
 """Test Evolution Manager: recipe tracking, resolution, confidence, procedures."""
 from __future__ import annotations
 
-from pathlib import Path
-
 from overmind.diagnosis.judge import Diagnosis
 from overmind.evolution.manager import EvolutionManager
 from overmind.evolution.recipe import Recipe

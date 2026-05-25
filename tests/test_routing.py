@@ -1,8 +1,8 @@
 """Test Q-learning routing and scheduler assignment."""
 from __future__ import annotations
 
-from overmind.runners.q_router import QRouter
 from overmind.core.scheduler import Scheduler
+from overmind.runners.q_router import QRouter
 from overmind.storage.models import ProjectRecord, RunnerRecord, TaskRecord
 
 

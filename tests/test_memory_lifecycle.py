@@ -1,8 +1,8 @@
 """Test memory save -> recall -> dream -> prune -> search cycle."""
 from __future__ import annotations
 
-from overmind.memory.store import MemoryStore
 from overmind.memory.dream_engine import DreamEngine
+from overmind.memory.store import MemoryStore
 from overmind.storage.models import MemoryRecord
 
 
@@ -67,10 +67,19 @@ def test_fts5_search(fresh_db, tmp_path):
     assert results[0].memory_id == "s1"
 
 
-def test_decay_reduces_relevance(fresh_db, tmp_path):
+def test_decay_uses_type_specific_rate_by_default(fresh_db, tmp_path):
     store = MemoryStore(fresh_db, tmp_path / "cp", tmp_path / "logs")
     mem = _make_memory("d1", "heuristic", "global", "Test decay", "Content", relevance=1.0)
     store.save(mem)
     store.decay_all(factor=0.5)
     after = store.get("d1")
+    assert after.relevance == 0.97
+
+
+def test_decay_can_override_per_type_rate(fresh_db, tmp_path):
+    store = MemoryStore(fresh_db, tmp_path / "cp", tmp_path / "logs")
+    mem = _make_memory("d2", "heuristic", "global", "Test decay", "Content", relevance=1.0)
+    store.save(mem)
+    store.decay_all(factor=0.5, per_type={"heuristic": 0.5})
+    after = store.get("d2")
     assert after.relevance == 0.5

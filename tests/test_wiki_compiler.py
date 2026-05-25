@@ -1,11 +1,9 @@
 """Test wiki compiler: article generation, history, index, changelog."""
 from __future__ import annotations
 
-from pathlib import Path
-
 from overmind.storage.models import ProjectRecord
-from overmind.verification.scope_lock import ScopeLock, WitnessResult
 from overmind.verification.cert_bundle import CertBundle
+from overmind.verification.scope_lock import ScopeLock, WitnessResult
 from overmind.wiki.compiler import WikiCompiler
 
 

@@ -2,12 +2,10 @@
 from __future__ import annotations
 
 import time
-from pathlib import Path
 
-from overmind.sessions.session_manager import SessionManager
-from overmind.sessions.transcript_store import TranscriptStore
-from overmind.storage.models import Assignment, ProjectRecord, RunnerRecord
 from overmind.runners.protocols import INTERACTIVE, ONE_SHOT
+from overmind.sessions.session_manager import SessionManager
+from overmind.storage.models import Assignment, ProjectRecord
 
 
 def test_echo_runner_spawns_and_exits(tmp_path, stub_runners):

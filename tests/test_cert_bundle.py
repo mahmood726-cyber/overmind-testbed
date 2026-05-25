@@ -3,8 +3,8 @@ from __future__ import annotations
 
 import json
 
-from overmind.verification.scope_lock import ScopeLock, WitnessResult
 from overmind.verification.cert_bundle import CertBundle
+from overmind.verification.scope_lock import ScopeLock, WitnessResult
 
 
 def _lock():

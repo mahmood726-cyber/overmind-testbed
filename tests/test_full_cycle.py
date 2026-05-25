@@ -1,8 +1,6 @@
 """End-to-end run_once smoke tests against CardioOracle with stubs."""
 from __future__ import annotations
 
-from pathlib import Path
-
 from overmind.config import AppConfig
 from overmind.core.orchestrator import Orchestrator
 
@@ -12,6 +10,7 @@ def test_dry_run_returns_would_dispatch(cardiooracle_project):
     config = AppConfig.from_directory()
     orch = Orchestrator(config)
     try:
+        orch.db.upsert_project(cardiooracle_project)
         result = orch.run_once(
             focus_project_id=cardiooracle_project.project_id,
             dry_run=True,
@@ -27,6 +26,7 @@ def test_dry_run_finds_cardiooracle(cardiooracle_project):
     config = AppConfig.from_directory()
     orch = Orchestrator(config)
     try:
+        orch.db.upsert_project(cardiooracle_project)
         result = orch.run_once(
             focus_project_id=cardiooracle_project.project_id,
             dry_run=True,
@@ -41,6 +41,7 @@ def test_dry_run_generates_tasks(cardiooracle_project):
     config = AppConfig.from_directory()
     orch = Orchestrator(config)
     try:
+        orch.db.upsert_project(cardiooracle_project)
         result = orch.run_once(
             focus_project_id=cardiooracle_project.project_id,
             dry_run=True,

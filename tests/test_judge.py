@@ -1,9 +1,9 @@
 """Test Judge agent failure diagnosis."""
 from __future__ import annotations
 
-from overmind.verification.scope_lock import ScopeLock, WitnessResult
+from overmind.diagnosis.judge import Judge
 from overmind.verification.cert_bundle import CertBundle
-from overmind.diagnosis.judge import Judge, Diagnosis
+from overmind.verification.scope_lock import ScopeLock, WitnessResult
 
 
 def _lock():

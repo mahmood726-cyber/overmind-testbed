@@ -3,10 +3,6 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from overmind.config import AppConfig
-from overmind.discovery.indexer import ProjectIndexer
-
-
 CARDIOORACLE_ROOT = Path("C:/Models/CardioOracle")
 
 

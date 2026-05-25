@@ -1,8 +1,8 @@
 """Test arbitrator fail-closed logic."""
 from __future__ import annotations
 
-from overmind.verification.scope_lock import WitnessResult
 from overmind.verification.cert_bundle import Arbitrator
+from overmind.verification.scope_lock import WitnessResult
 
 
 def _witness(wtype, verdict):

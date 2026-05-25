@@ -1,8 +1,8 @@
 """Test multi-persona review for CardioOracle."""
 from __future__ import annotations
 
+from overmind.review.finding import compute_consensus, parse_review_output
 from overmind.review.multi_persona import MultiPersonaReviewer
-from overmind.review.finding import parse_review_output, compute_consensus
 
 
 def test_five_personas_for_high_risk_math(fresh_db, cardiooracle_project):

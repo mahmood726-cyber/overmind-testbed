@@ -3,9 +3,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from overmind.storage.models import ProjectRecord, TaskRecord
+from overmind.storage.models import TaskRecord
 from overmind.verification.verifier import VerificationEngine
-
 
 CARDIOORACLE_ROOT = Path("C:/Models/CardioOracle")
 

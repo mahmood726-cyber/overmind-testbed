@@ -5,7 +5,6 @@ from pathlib import Path
 
 from overmind.isolation.worktree_manager import WorktreeManager
 
-
 CARDIOORACLE_ROOT = Path("C:/Models/CardioOracle")
 
 

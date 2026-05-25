@@ -2,16 +2,13 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 
 from overmind.verification.witnesses import (
-    SuiteWitness,
-    SmokeWitness,
     NumericalWitness,
+    SmokeWitness,
+    SuiteWitness,
 )
-
-
-CARDIOORACLE_ROOT = Path("C:/Models/CardioOracle")
+from tests.conftest import CARDIOORACLE_ROOT
 
 
 def test_test_suite_witness_passes_real_pytest(tmp_path):

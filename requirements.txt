@@ -1,0 +1,6 @@
+# Runtime + test dependencies.
+# Pin minimum versions; the CI workflow (.github/workflows/ci.yml) installs
+# these for both lint and test jobs.
+
+pytest>=8.0
+pytest-timeout>=2.0

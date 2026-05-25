@@ -1,5 +1,7 @@
 # OvermindTestBed
 
+[![ci](https://github.com/mahmood726-cyber/overmind-testbed/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/mahmood726-cyber/overmind-testbed/actions/workflows/ci.yml) [![codeql](https://github.com/mahmood726-cyber/overmind-testbed/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/mahmood726-cyber/overmind-testbed/actions/workflows/codeql.yml) [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![python: 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
+
 Integration test harness for Overmind — exercises orchestrator subsystems against CardioOracle.
 
 ## Install

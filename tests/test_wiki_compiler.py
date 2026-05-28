@@ -1,6 +1,7 @@
 """Test wiki compiler: article generation, history, index, changelog."""
 from __future__ import annotations
 
+from test_paths import fixture_root
 from overmind.storage.models import ProjectRecord
 from overmind.verification.cert_bundle import CertBundle
 from overmind.verification.scope_lock import ScopeLock, WitnessResult
@@ -9,7 +10,7 @@ from overmind.wiki.compiler import WikiCompiler
 
 def _bundle(project_id="proj_a", verdict="CERTIFIED", reason="2/2 agree"):
     lock = ScopeLock(
-        project_id=project_id, project_path="C:\\test",
+        project_id=project_id, project_path=fixture_root(project_id),
         risk_profile="high", witness_count=2,
         test_command="pytest", smoke_modules=("engine",),
         baseline_path=None, expected_outcome="pass",
@@ -27,7 +28,7 @@ def _bundle(project_id="proj_a", verdict="CERTIFIED", reason="2/2 agree"):
 def _project(project_id="proj_a", name="TestProject"):
     return ProjectRecord(
         project_id=project_id, name=name,
-        root_path="C:\\test", risk_profile="high",
+        root_path=fixture_root(project_id), risk_profile="high",
         advanced_math_score=20, project_type="python_tool",
         stack=["python"], test_commands=["pytest tests/ -q"],
     )
@@ -73,7 +74,7 @@ def test_changelog_appended(tmp_path):
 
 def test_reject_has_notes(tmp_path):
     lock = ScopeLock(
-        project_id="proj_b", project_path="C:\\test",
+        project_id="proj_b", project_path=fixture_root("proj_b"),
         risk_profile="high", witness_count=2,
         test_command="pytest", smoke_modules=("engine",),
         baseline_path=None, expected_outcome="pass",
@@ -89,7 +90,7 @@ def test_reject_has_notes(tmp_path):
     )
     proj = ProjectRecord(
         project_id="proj_b", name="BrokenProject",
-        root_path="C:\\test", risk_profile="high",
+        root_path=fixture_root("proj_b"), risk_profile="high",
         advanced_math_score=15, test_commands=["pytest"],
     )
     compiler = WikiCompiler(tmp_path / "wiki")

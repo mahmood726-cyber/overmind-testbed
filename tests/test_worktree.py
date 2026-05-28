@@ -1,11 +1,10 @@
 """Test git worktree isolation for CardioOracle."""
 from __future__ import annotations
 
-from pathlib import Path
-
 from overmind.isolation.worktree_manager import WorktreeManager
+from test_paths import resolve_cardiooracle_root
 
-CARDIOORACLE_ROOT = Path("C:/Models/CardioOracle")
+CARDIOORACLE_ROOT = resolve_cardiooracle_root()
 
 
 def test_non_git_returns_none(tmp_path):
@@ -29,5 +28,5 @@ def test_no_isolation_when_not_concurrent(tmp_path):
     wt = WorktreeManager(tmp_path / "worktrees")
     assert wt.needs_isolation(
         CARDIOORACLE_ROOT,
-        {"C:\\Models\\OtherProject"},
+        {"F:\\Models\\OtherProject"},
     ) is False

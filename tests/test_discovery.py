@@ -1,10 +1,6 @@
 """Test that Overmind correctly discovers and indexes CardioOracle."""
 from __future__ import annotations
 
-from pathlib import Path
-
-CARDIOORACLE_ROOT = Path("C:/Models/CardioOracle")
-
 
 def test_project_type_is_browser_app(cardiooracle_project):
     # CardioOracle has index.html at root → browser_app (no pyproject.toml/requirements.txt)

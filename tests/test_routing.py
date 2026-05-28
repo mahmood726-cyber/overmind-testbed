@@ -1,6 +1,7 @@
 """Test Q-learning routing and scheduler assignment."""
 from __future__ import annotations
 
+from test_paths import fixture_root
 from overmind.core.scheduler import Scheduler
 from overmind.runners.q_router import QRouter
 from overmind.storage.models import ProjectRecord, RunnerRecord, TaskRecord
@@ -11,7 +12,7 @@ def _minimal_project(project_id: str) -> ProjectRecord:
     return ProjectRecord(
         project_id=project_id,
         name="test-project",
-        root_path="C:/test",
+        root_path=fixture_root(project_id),
     )
 
 

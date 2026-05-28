@@ -7,6 +7,7 @@ from datetime import datetime as _datetime
 from pathlib import Path
 
 import pytest
+from test_paths import resolve_cardiooracle_root
 from overmind.config import AppConfig
 from overmind.discovery.project_scanner import ProjectScanner
 from overmind.storage.db import StateDatabase
@@ -14,29 +15,7 @@ from overmind.storage.models import (
     MemoryRecord,
     RunnerRecord,
 )
-
-
-def _resolve_cardiooracle_root() -> Path:
-    candidates = []
-    env_root = os.environ.get("CARDIOORACLE_ROOT", "")
-    if env_root:
-        candidates.append(Path(env_root).expanduser())
-    candidates.extend([
-        Path("F:/Models/CardioOracle"),
-        Path("C:/Models/CardioOracle"),
-        Path("F:/Projects/CardioOracle"),
-        Path("C:/Projects/CardioOracle"),
-    ])
-    for candidate in candidates:
-        if candidate.exists():
-            return candidate.resolve()
-    raise FileNotFoundError(
-        "CardioOracle root not found. Set CARDIOORACLE_ROOT or restore one of: "
-        + ", ".join(str(candidate) for candidate in candidates)
-    )
-
-
-CARDIOORACLE_ROOT = _resolve_cardiooracle_root()
+CARDIOORACLE_ROOT = resolve_cardiooracle_root()
 STUBS_DIR = Path(__file__).resolve().parents[1] / "stubs"
 PYTHON_EXE = sys.executable
 
